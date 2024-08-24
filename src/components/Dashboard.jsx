@@ -1,12 +1,33 @@
 import styled from "styled-components";
 
-const DashboardContainer = styled.div``;
+const DashboardContainer = styled.div`
+  background-color: #fff5d8;
+`;
 
-const Dashboard = ({ pokemonList, setPokemonList }) => {
-  {selectPokemonCard.length === 0? (<p>선택된 포켓몬이 없습니다<div className=""></div></p>):
-  const selectPokemonCard = pokemonList.map((pokemon) => 
-    <li key={pokemon.id}>{pokemon.korean_name}</li>)
-  }}; 
+const Dashboard = ({ selectPokemonList }) => {
+  const selectPokemonCard = selectPokemonList.map((pokemon) => {
+    return (
+      <div key={pokemon.id}>
+        <li>
+          {pokemon.name}
+          <br></br>
+          <img src={pokemon.img} alt={pokemon.name} />
+          <br></br>
+          {pokemon.types}
+          <br></br>
+          {pokemon.description}
+        </li>
+      </div>
+    );
+  });
+
+  console.log(selectPokemonCard);
+
+  // console.log(pokemon);
+
+  // console.log("selectPokemonCard", selectPokemonCard);
+
+  // {selectPokemonCard.length === 0? (<p>선택된 포켓몬이 없습니다<div className=""></div></p>):
 
   return (
     <DashboardContainer>
@@ -19,3 +40,4 @@ const Dashboard = ({ pokemonList, setPokemonList }) => {
 };
 
 export default Dashboard;
+//UI는 무조건 return 하위에다가.

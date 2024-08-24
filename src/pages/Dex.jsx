@@ -4,12 +4,17 @@ import PokemonList from "../components/PokemonList";
 import MOCK_DATA from "../mock";
 
 const Dex = () => {
-  const [pokemonList, setPokemonList] = useState([]);
+  const [selectPokemonList, setSelectPokemonList] = useState([]);
 
+  // console.log(MOCK_DATA);
   return (
     <div>
-      <Dashboard pokemonList={pokemonList} setPokemonList={setPokemonList} />
-      <PokemonList mockdata={MOCK_DATA} />
+      <Dashboard selectPokemonList={selectPokemonList} />
+      <PokemonList
+        MOCK_DATA={MOCK_DATA}
+        selectPokemonList={selectPokemonList}
+        setSelectPokemonList={setSelectPokemonList}
+      />
     </div>
   );
 };
