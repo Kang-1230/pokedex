@@ -1,16 +1,17 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { GlobalContext } from "../pages/Dex";
 
-const PokemonList = ({
-  MOCK_DATA,
-  selectPokemonList,
-  setSelectPokemonList,
-}) => {
+const PokemonList = () => {
+  const { selectPokemonList, setSelectPokemonList, MOCK_DATA } =
+    useContext(GlobalContext);
+
   const goToDetail = useNavigate();
 
   const createPokemonList = MOCK_DATA.map((pokemon) => {
     return (
       <div key={pokemon.id}>
-        <div onClick={() => goToDetail(`/dex/${pokemon.id}`)}>
+        <div onClick={() => goToDetail(`/dex/detail?id=${pokemon.id}`)}>
           <img src={pokemon.img_url} />
           <h3>{pokemon.korean_name}</h3>
           <h4>{pokemon.types}</h4>

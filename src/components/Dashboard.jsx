@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import PokemonCard from "./PokemonCard";
 import { PokemonCardLayout } from "./PokemonCard";
+import { useContext } from "react";
+import { GlobalContext } from "../pages/Dex";
 
 const DashboardContainer = styled.div`
   width: 100%;
   height: 800px;
   display: flex;
   flex-direction: column;
-  /* background-color: #fff5d8; */
   align-items: center;
   text-align: center;
 `;
@@ -25,7 +26,9 @@ const PokeBallList = styled.ul`
   align-items: center;
 `;
 
-const Dashboard = ({ selectPokemonList, setSelectPokemonList }) => {
+const Dashboard = () => {
+  const { selectPokemonList, setSelectPokemonList } = useContext(GlobalContext);
+
   const deletePokemonCard = (pokemon) => {
     //삭제 기능
     const sameNameIndex = selectPokemonList.findIndex((c) => {
@@ -41,7 +44,7 @@ const Dashboard = ({ selectPokemonList, setSelectPokemonList }) => {
   };
 
   //선택된 포켓몬 리스트 구현
-  const selectPokemonCard = selectPokemonList.map((pokemon) => {
+  const selectPokemonCard = selectPokemonList.map((pokemon, index) => {
     if (pokemon) {
       return (
         <PokemonCardLayout key={pokemon.id}>
@@ -59,7 +62,7 @@ const Dashboard = ({ selectPokemonList, setSelectPokemonList }) => {
         </PokemonCardLayout>
       );
     } else {
-      return <PokemonCard />;
+      return <PokemonCard key={`null - ${index}`} />;
     }
   });
 

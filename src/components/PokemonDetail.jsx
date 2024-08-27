@@ -1,13 +1,26 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import MOCK_DATA from "../mock";
 
 const PokemonDetail = () => {
-  const { id } = useParams();
-  const pokemonId = Number(id);
+  const [searchParams] = useSearchParams();
+  const pokemonId = searchParams.get("id");
+
+  console.log(pokemonId);
   const goback = useNavigate();
-  const pokemon = MOCK_DATA.find((p) => p.id === pokemonId);
+  const pokemon = MOCK_DATA.find((p) => p.id === Number(pokemonId));
   if (!pokemon) {
-    return <div>이 포켓몬을 아직 만나지 않았단다!</div>;
+    return (
+      <>
+        <div>이 포켓몬을 아직 만나지 않았단다!</div>
+        <button
+          onClick={() => {
+            goback(`/dex`);
+          }}
+        >
+          뒤로 가기
+        </button>
+      </>
+    );
   }
   return (
     <div>

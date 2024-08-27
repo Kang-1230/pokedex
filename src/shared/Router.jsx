@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import Dex from "../pages/Dex";
@@ -10,7 +9,7 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="dex" element={<Dex />} />
-        <Route path="dex/:id" element={<PokemonDetail />} />
+        <Route path="dex/detail" element={<PokemonDetail />} />
       </Routes>
     </BrowserRouter>
   );
