@@ -11,6 +11,8 @@ const DashboardContainer = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  margin-top: 60px;
+  margin-bottom: 100px;
 `;
 
 const ProfesserOak = styled.img`

@@ -1,6 +1,30 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { GlobalContext } from "../pages/Dex";
+import styled from "styled-components";
+
+const PokeListStyle = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13%, auto));
+  grid-gap: 8px;
+  place-items: center;
+`;
+
+const PokeCardStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  width: 200px;
+  height: 350px;
+  padding: 10px;
+  border: 1px solid black;
+  box-shadow: 1px;
+  margin: 5px;
+  list-style: none;
+`;
 
 const PokemonList = () => {
   const { selectPokemonList, setSelectPokemonList, MOCK_DATA } =
@@ -10,7 +34,7 @@ const PokemonList = () => {
 
   const createPokemonList = MOCK_DATA.map((pokemon) => {
     return (
-      <div key={pokemon.id}>
+      <PokeCardStyle key={pokemon.id}>
         <div onClick={() => goToDetail(`/dex/detail?id=${pokemon.id}`)}>
           <img src={pokemon.img_url} />
           <h3>{pokemon.korean_name}</h3>
@@ -25,7 +49,7 @@ const PokemonList = () => {
         >
           추가
         </button>
-      </div>
+      </PokeCardStyle>
     );
   });
 
@@ -50,7 +74,7 @@ const PokemonList = () => {
 
     setSelectPokemonList(newSelectPokemonList);
   };
-  return <div>{createPokemonList}</div>;
+  return <PokeListStyle>{createPokemonList}</PokeListStyle>;
 };
 
 export default PokemonList;
