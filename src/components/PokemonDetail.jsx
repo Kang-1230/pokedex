@@ -5,7 +5,6 @@ const PokemonDetail = () => {
   const { id } = useParams();
   const pokemonId = Number(id);
   const goback = useNavigate();
-  // 포켓몬 ID 를 쿼리스트링으로부터 받아옵시다.
   const pokemon = MOCK_DATA.find((p) => p.id === pokemonId);
   if (!pokemon) {
     return <div>이 포켓몬을 아직 만나지 않았단다!</div>;
